@@ -230,7 +230,7 @@ export default function Home() {
                                 <div className="d-flex">
                                     <div className="flex-shrink-0"><i className="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
                                     <div className="ms-4">
-                                        <p className="mb-1">Connor's entire team was professional and easy to work with. Problems were fixed immediately and they came in on time and on budget. Great experience!</p>
+                                        <p className="mb-1">Connor&apos;s entire team was professional and easy to work with. Problems were fixed immediately and they came in on time and on budget. Great experience!</p>
                                         <div className="small text-muted">- Jay Rice, Michigan</div>
                                     </div>
                                 </div>
@@ -244,7 +244,7 @@ export default function Home() {
             <div className="container px-5 my-5 px-5">
                 <div className="text-center mb-5">
                     <h2 className="fw-bolder">Get in touch</h2>
-                    <p className="lead mb-0">We'd love to hear from you</p>
+                    <p className="lead mb-0">We&apos;d love to hear from you</p>
                 </div>
                 <div className="row gx-5 justify-content-center">
                     <div className="col-lg-9">
