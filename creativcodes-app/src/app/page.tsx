@@ -1,274 +1,216 @@
-'use client'
-import React, { useState } from 'react';
+import { type Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
 
-export default function Home() {
-  const [active, setActive] = useState('home');
+import { ContactSection } from '@/components/ContactSection'
+import { Container } from '@/components/Container'
+import { FadeIn, FadeInStagger } from '@/components/FadeIn'
+import { List, ListItem } from '@/components/List'
+import { SectionIntro } from '@/components/SectionIntro'
+import { StylizedImage } from '@/components/StylizedImage'
+import { Testimonial } from '@/components/Testimonial'
+import logoBrightPath from '@/images/clients/bright-path/logo-light.svg'
+import logoFamilyFund from '@/images/clients/family-fund/logo-light.svg'
+import logoGreenLife from '@/images/clients/green-life/logo-light.svg'
+import logoHomeWork from '@/images/clients/home-work/logo-light.svg'
+import logoMailSmirk from '@/images/clients/mail-smirk/logo-light.svg'
+import logoNorthAdventures from '@/images/clients/north-adventures/logo-light.svg'
+import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
+import logoPhobiaLight from '@/images/clients/phobia/logo-light.svg'
+import logoUnseal from '@/images/clients/unseal/logo-light.svg'
+import imageLaptop from '@/images/laptop.jpg'
+import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
+
+const clients = [
+  ['Phobia', logoPhobiaLight],
+  ['Family Fund', logoFamilyFund],
+  ['Unseal', logoUnseal],
+  ['Mail Smirk', logoMailSmirk],
+  ['Home Work', logoHomeWork],
+  ['Green Life', logoGreenLife],
+  ['Bright Path', logoBrightPath],
+  ['North Adventures', logoNorthAdventures],
+]
+
+function Clients() {
+  return (
+    <div className="mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56">
+      <Container>
+        <FadeIn className="flex items-center gap-x-8">
+          <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
+            We’ve worked with hundreds of amazing people
+          </h2>
+          <div className="h-px flex-auto bg-neutral-800" />
+        </FadeIn>
+        <FadeInStagger faster>
+          <ul
+            role="list"
+            className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4"
+          >
+            {clients.map(([client, logo]) => (
+              <li key={client}>
+                <FadeIn>
+                  <Image src={logo} alt={client} unoptimized />
+                </FadeIn>
+              </li>
+            ))}
+          </ul>
+        </FadeInStagger>
+      </Container>
+    </div>
+  )
+}
+
+function CaseStudies({
+  caseStudies,
+}: {
+  caseStudies: Array<MDXEntry<CaseStudy>>
+}) {
+  return (
+    <>
+      <SectionIntro
+        title="Harnessing technology for a brighter future"
+        className="mt-24 sm:mt-32 lg:mt-40"
+      >
+        <p>
+          We believe technology is the answer to the world’s greatest
+          challenges. It’s also the cause, so we find ourselves in bit of a
+          catch 22 situation.
+        </p>
+      </SectionIntro>
+      <Container className="mt-16">
+        <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {caseStudies.map((caseStudy) => (
+            <FadeIn key={caseStudy.href} className="flex">
+              <article className="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50 sm:p-8">
+                <h3>
+                  <Link href={caseStudy.href}>
+                    <span className="absolute inset-0 rounded-3xl" />
+                    <Image
+                      src={caseStudy.logo}
+                      alt={caseStudy.client}
+                      className="h-16 w-16"
+                      unoptimized
+                    />
+                  </Link>
+                </h3>
+                <p className="mt-6 flex gap-x-2 text-sm text-neutral-950">
+                  <time
+                    dateTime={caseStudy.date.split('-')[0]}
+                    className="font-semibold"
+                  >
+                    {caseStudy.date.split('-')[0]}
+                  </time>
+                  <span className="text-neutral-300" aria-hidden="true">
+                    /
+                  </span>
+                  <span>Case study</span>
+                </p>
+                <p className="mt-6 font-display text-2xl font-semibold text-neutral-950">
+                  {caseStudy.title}
+                </p>
+                <p className="mt-4 text-base text-neutral-600">
+                  {caseStudy.description}
+                </p>
+              </article>
+            </FadeIn>
+          ))}
+        </FadeInStagger>
+      </Container>
+    </>
+  )
+}
+
+function Services() {
+  return (
+    <>
+      <SectionIntro
+        eyebrow="Services"
+        title="We help you identify, explore and respond to new opportunities."
+        className="mt-24 sm:mt-32 lg:mt-40"
+      >
+        <p>
+          As long as those opportunities involve giving us money to re-purpose
+          old projects — we can come up with an endless number of those.
+        </p>
+      </SectionIntro>
+      <Container className="mt-16">
+        <div className="lg:flex lg:items-center lg:justify-end">
+          <div className="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
+            <FadeIn className="w-[33.75rem] flex-none lg:w-[45rem]">
+              <StylizedImage
+                src={imageLaptop}
+                sizes="(min-width: 1024px) 41rem, 31rem"
+                className="justify-center lg:justify-end"
+              />
+            </FadeIn>
+          </div>
+          <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
+            <ListItem title="Web development">
+              We specialise in crafting beautiful, high quality marketing pages.
+              The rest of the website will be a shell that uses lorem ipsum
+              everywhere.
+            </ListItem>
+            <ListItem title="Application development">
+              We have a team of skilled developers who are experts in the latest
+              app frameworks, like Angular 1 and Google Web Toolkit.
+            </ListItem>
+            <ListItem title="E-commerce">
+              We are at the forefront of modern e-commerce development. Which
+              mainly means adding your logo to the Shopify store template we’ve
+              used for the past six years.
+            </ListItem>
+            <ListItem title="Custom content management">
+              At Studio we understand the importance of having a robust and
+              customised CMS. That’s why we run all of our client projects out
+              of a single, enormous Joomla instance.
+            </ListItem>
+          </List>
+        </div>
+      </Container>
+    </>
+  )
+}
+
+export const metadata: Metadata = {
+  description:
+    'We are a development studio working at the intersection of design and technology.',
+}
+
+export default async function Home() {
+  let caseStudies = (await loadCaseStudies()).slice(0, 3)
 
   return (
-    <main id="home">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-            <div className="container px-5">
-                <a className="navbar-brand" href="#home" onClick={() => setActive('home')}><img src="/logo.png" width="200px" /></a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li className="nav-item"><a className={`nav-link visible ${active === 'home' ? 'active' : ''}`} href="#home" onClick={() => setActive('home')}>Home</a></li>
-                        <li className="nav-item"><a className={`nav-link visible ${active === 'about' ? 'active' : ''}`} href="#features" onClick={() => setActive('about')}>About</a></li>
-                        <li className="nav-item"><a className={`nav-link visible ${active === 'pricing' ? 'active' : ''}`} href="#pricing" onClick={() => setActive('pricing')}>Pricing</a></li>
-                        <li className="nav-item"><a className={`nav-link visible ${active === 'testimonials' ? 'active' : ''}`} href="#testimonials" onClick={() => setActive('testimonials')}>Testimonials</a></li>
-                        <li className="nav-item"><a className={`nav-link visible ${active === 'contact' ? 'active' : ''}`} href="#contact" onClick={() => setActive('contact')}>Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <header className="py-5 bg-[url('/web-design.jpg')] bg-cover bg-center">
-            <div className="container px-5">
-                <div className="row gx-5 justify-content-center">
-                    <div className="col-lg-9 bg-black bg-opacity-50">
-                        <div className="text-center my-5 opac">
-                            <h1 className="display-5 fw-bolder text-white mb-2">Modern Web Development</h1>
-                            <p className="lead text-white mb-4">Quickly realize the power of an expert team building web applications for you and your business.</p>
-                            <div className="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                <a className="btn btn-primary btn-lg px-4 me-sm-3" href="#features" onClick={() => setActive('about')}>Get Started</a>
-                                <a className="btn btn-outline-light btn-lg px-4" href="#contact" onClick={() => setActive('contact')}>Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <section className="py-5 border-bottom" id="features">
-            <div className="container px-5 my-5">
-                <div className="row gx-5">
-                    <div className="col-lg-4 mb-5 mb-lg-0">
-                        <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i className="bi bi-house-door-fill"></i></div>
-                        <h2 className="h4 fw-bolder">US Based</h2>
-                        <p>Get expert, English speaking web development all based in the United States that can understand what you want immediately.</p>
-                    </div>
-                    <div className="col-lg-4 mb-5 mb-lg-0">
-                        <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i className="bi bi-headset-vr"></i></div>
-                        <h2 className="h4 fw-bolder">Cutting Edge</h2>
-                        <p>Experience the latest technoloiges and techniques to make your business flourish in the modern era with advanced tracking and reporting. </p>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i className="bi bi-tag-fill"></i></div>
-                        <h2 className="h4 fw-bolder">Fair Pricing</h2>
-                        <p>Get the benefit of an entire team at not even the cost of one developer and unleash your true potential and make your dreams a reality.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="pricing" className="bg-light py-5 border-bottom">
-            <div className="container px-5 my-5">
-                <div className="text-center mb-5">
-                    <h2 className="fw-bolder">Pay as you grow</h2>
-                    <p className="lead mb-0">With our no hassle pricing plans</p>
-                </div>
-                <div className="row gx-5 justify-content-center">
-                    <div className="col-lg-6 col-xl-4">
-                        <div className="card mb-5 mb-xl-0">
-                            <div className="card-body p-5">
-                                <div className="small text-uppercase fw-bold text-muted">Quick Start</div>
-                                <div className="mb-3">
-                                    <span className="display-4 fw-bold">$1,500</span>
-                                </div>
-                                <ul className="list-unstyled mb-4">
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        <strong>1 website</strong>
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        15 Pages
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Contact Form
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        30 Days of Support
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Modern Design
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Google Analytics
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Dedicated support
-                                    </li>
-                                    
-                                    <li className="">
-                                        <i className="bi bi-check text-primary"></i>
-                                        45 Day Turn Around
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 col-xl-4">
-                        <div className="card mb-5 mb-xl-0">
-                            <div className="card-body p-5">
-                                <div className="small text-uppercase fw-bold">
-                                    <i className="bi bi-star-fill text-warning"></i>
-                                    Basic Website
-                                </div>
-                                <div className="mb-3">
-                                    <span className="display-4 fw-bold">$3,000</span>
-                                </div>
-                                <ul className="list-unstyled mb-4">
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        <strong>1 website</strong>
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        45 Pages
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Contact Form
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        30 Days of Support
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Modern Design
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Google Analytics
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Dedicated support
-                                    </li>
-                                    
-                                    <li className="">
-                                        <i className="bi bi-check text-primary"></i>
-                                       60 Day Turn Around
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 col-xl-4">
-                        <div className="card">
-                            <div className="card-body p-5">
-                                <div className="small text-uppercase fw-bold text-muted">Advanced Application</div>
-                                <div className="mb-3">
-                                    <span className="display-4 fw-bold">$5,000+</span>
-                                </div>
-                                <ul className="list-unstyled mb-4">
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        <strong>1 web application</strong>
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Unlimited Pages
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        User Interaction
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        30 Days of Support
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Modern Design
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Google Analytics
-                                    </li>
-                                    <li className="mb-2">
-                                        <i className="bi bi-check text-primary"></i>
-                                        Dedicated support
-                                    </li>
-                                    
-                                    <li className="">
-                                        <i className="bi bi-check text-primary"></i>
-                                       90+ Day Turn Around
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="testimonials" className="py-5 border-bottom">
-            <div className="container px-5 my-5 px-5">
-                <div className="text-center mb-5">
-                    <h2 className="fw-bolder">Customer testimonials</h2>
-                    <p className="lead mb-0">Our customers love working with us</p>
-                </div>
-                <div className="row gx-5 justify-content-center">
-                    <div className="col-lg-6">
-                        <div className="card mb-4">
-                            <div className="card-body p-4">
-                                <div className="d-flex">
-                                    <div className="flex-shrink-0"><i className="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
-                                    <div className="ms-4">
-                                        <p className="mb-1">I felt heard and understood from the first call. Connor delivered everything I wanted and more. I highly recommend!</p>
-                                        <div className="small text-muted">- Debra Kantor, California</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-body p-4">
-                                <div className="d-flex">
-                                    <div className="flex-shrink-0"><i className="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
-                                    <div className="ms-4">
-                                        <p className="mb-1">Connor&apos;s entire team was professional and easy to work with. Problems were fixed immediately and they came in on time and on budget. Great experience!</p>
-                                        <div className="small text-muted">- Jay Rice, Michigan</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="contact" className="bg-light py-5">
-            <div className="container px-5 my-5 px-5">
-                <div className="text-center mb-5">
-                    <h2 className="fw-bolder">Get in touch</h2>
-                    <p className="lead mb-0">We&apos;d love to hear from you</p>
-                </div>
-                <div className="row gx-5 justify-content-center">
-                    <div className="col-lg-9">
-                      <ul className="list-unstyled fs-5">
-                        <li className="text-center" >
-                          <div className="feature-small bg-primary bg-gradient text-white rounded-3 mb-3 me-3"><i className="bi bi-telephone-fill"></i></div>
-                          (925) 378-1728
-                        </li>
-                        <li className="text-center" >
-                          <div className="feature-small bg-primary bg-gradient text-white rounded-3 mb-3 me-3"><i className="bi bi-envelope-fill"></i></div>
-                          connor@creativcodes.com
-                        </li>
-                        <li className="text-center" >
-                          <div className="feature-small bg-primary bg-gradient text-white rounded-3 me-3"><i className="bi bi-geo-alt-fill"></i></div>
-                          26191 La Real Apt E, Mission Viejo, CA 92691
-                        </li>
-                      </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer className="py-5 bg-dark">
-            <div className="container px-5"><p className="m-0 text-center text-white">Copyright &copy; CreativCodes {new Date().getFullYear()}</p></div>
-        </footer>
-    </main>
-  );
+    <>
+      <Container className="mt-24 sm:mt-32 md:mt-56">
+        <FadeIn className="max-w-3xl">
+          <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
+            Award-winning development studio based in Denmark.
+          </h1>
+          <p className="mt-6 text-xl text-neutral-600">
+            We are a development studio working at the intersection of design
+            and technology. It’s a really busy intersection though — a lot of
+            our staff have been involved in hit and runs.
+          </p>
+        </FadeIn>
+      </Container>
+
+      <Clients />
+
+      <CaseStudies caseStudies={caseStudies} />
+
+      <Testimonial
+        className="mt-24 sm:mt-32 lg:mt-40"
+        client={{ name: 'Phobia', logo: logoPhobiaDark }}
+      >
+        The team at Studio went above and beyond with our onboarding, even
+        finding a way to access the user’s microphone without triggering one of
+        those annoying permission dialogs.
+      </Testimonial>
+
+      <Services />
+
+      <ContactSection />
+    </>
+  )
 }
