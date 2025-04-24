@@ -259,7 +259,7 @@ export default function Home() {
                         </li>
                         <li className="text-center" >
                           <div className="feature-small bg-primary bg-gradient text-white rounded-3 me-3"><i className="bi bi-geo-alt-fill"></i></div>
-                          26191 La Real Apt E, Mission Viejo, CA 92691
+                          26060 Acero, Suite 117, Mission Viejo, CA 92691
                         </li>
                       </ul>
                     </div>
