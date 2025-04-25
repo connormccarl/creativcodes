@@ -48,7 +48,7 @@ export default function Home() {
                     <div className="col-lg-4 mb-5 mb-lg-0">
                         <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i className="bi bi-headset-vr"></i></div>
                         <h2 className="h4 fw-bolder">Cutting Edge</h2>
-                        <p>Experience the latest technoloiges and techniques to make your business flourish in the modern era with advanced tracking and reporting. </p>
+                        <p>Experience the latest technologies and techniques to make your business flourish in the modern era with advanced tracking and reporting. </p>
                     </div>
                     <div className="col-lg-4">
                         <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i className="bi bi-tag-fill"></i></div>
