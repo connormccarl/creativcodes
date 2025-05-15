@@ -251,7 +251,7 @@ export default function Home() {
                       <ul className="list-unstyled fs-5">
                         <li className="text-center" >
                           <div className="feature-small bg-primary bg-gradient text-white rounded-3 mb-3 me-3"><i className="bi bi-telephone-fill"></i></div>
-                          (925) 378-1728
+                          (949) 414-5023
                         </li>
                         <li className="text-center" >
                           <div className="feature-small bg-primary bg-gradient text-white rounded-3 mb-3 me-3"><i className="bi bi-envelope-fill"></i></div>
@@ -259,7 +259,7 @@ export default function Home() {
                         </li>
                         <li className="text-center" >
                           <div className="feature-small bg-primary bg-gradient text-white rounded-3 me-3"><i className="bi bi-geo-alt-fill"></i></div>
-                          26060 Acero, Suite 117, Mission Viejo, CA 92691
+                          26191 La Real, Apt E, Mission Viejo, CA 92691
                         </li>
                       </ul>
                     </div>
