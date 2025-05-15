@@ -259,7 +259,11 @@ export default function Home() {
                         </li>
                         <li className="text-center" >
                           <div className="feature-small bg-primary bg-gradient text-white rounded-3 me-3"><i className="bi bi-geo-alt-fill"></i></div>
-                          26191 La Real<br />Apt E<br />Mission Viejo, CA 92691
+                          <div>  
+                            26191 La Real<br />
+                            Apt E<br />
+                            Mission Viejo, CA 92691
+                          </div>
                         </li>
                       </ul>
                     </div>
