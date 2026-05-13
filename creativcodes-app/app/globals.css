@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background: #f6f8fb;
+  color: #101418;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(149, 0, 242, 0.14), transparent 32%),
+    radial-gradient(circle at 92% 8%, rgba(0, 166, 166, 0.1), transparent 28%),
+    linear-gradient(180deg, #fbfaff 0%, #eef3f8 48%, #f6f8fb 100%);
+  color: #101418;
+}
+
+::selection {
+  background: rgba(149, 0, 242, 0.18);
+}
+
+.mesh-grid {
+  background-image:
+    linear-gradient(rgba(16, 20, 24, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 20, 24, 0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+}
+
+.eyebrow {
+  @apply text-xs font-bold uppercase tracking-[0.22em] text-primary;
+}
+
+.enterprise-card {
+  @apply border border-line bg-white/85 shadow-soft backdrop-blur;
+}
