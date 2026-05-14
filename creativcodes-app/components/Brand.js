@@ -16,9 +16,13 @@ export function Bolt({ className = "" }) {
 export function BrandLockup({ compact = false, dark = false }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="flex h-11 w-11 items-center justify-center rounded bg-primary/10 ring-1 ring-primary/20">
-        <Bolt className="h-8 w-6" />
-      </div>
+      {compact ? (
+        <Bolt className="h-11 w-8" />
+      ) : (
+        <div className="flex h-11 w-11 items-center justify-center rounded bg-primary/10 ring-1 ring-primary/20">
+          <Bolt className="h-8 w-6" />
+        </div>
+      )}
       <div>
         <div className={`font-display text-lg font-extrabold tracking-tight ${dark ? "text-white" : "text-ink"}`}>
           CreativCodes

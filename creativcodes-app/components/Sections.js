@@ -3,14 +3,14 @@ import { engagementSteps, outcomes, packages, serviceTiers, stats } from "./site
 
 export function HeroSection({ onOpenLeadModal }) {
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="absolute inset-0 mesh-grid opacity-50" aria-hidden="true" />
-      <Bolt className="absolute -right-24 top-10 h-[520px] w-[390px] rotate-12 opacity-[0.08]" />
-      <Bolt className="absolute -bottom-28 left-[-90px] h-[320px] w-[240px] -rotate-12 opacity-[0.1]" />
-      <div className="section-shell relative grid min-h-[calc(100vh-80px)] items-center gap-12 py-16 lg:grid-cols-[1fr_0.92fr] lg:py-24">
+    <section id="top" className="relative overflow-hidden bg-white">
+      <div className="absolute inset-0 mesh-grid opacity-70" aria-hidden="true" />
+      <Bolt className="absolute -right-28 top-4 h-[540px] w-[400px] rotate-12 opacity-[0.035]" />
+      <Bolt className="absolute -bottom-28 left-[-110px] h-[320px] w-[240px] -rotate-12 opacity-[0.05]" />
+      <div className="section-shell relative grid min-h-[calc(100vh-80px)] items-center gap-12 py-16 lg:grid-cols-[1fr_0.86fr] lg:py-24">
         <div>
-          <p className="eyebrow">Admin support to AI strategy</p>
-          <h1 className="mt-6 max-w-5xl font-display text-4xl font-extrabold leading-[1.04] tracking-tight text-ink sm:text-5xl xl:text-6xl">
+          <p className="eyebrow text-ink">Admin support to AI strategy</p>
+          <h1 className="mt-6 max-w-5xl font-display text-5xl font-extrabold leading-[0.98] tracking-tight text-ink sm:text-6xl xl:text-7xl">
             Add voltage to your business with the right technical partner on demand.
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-graphite/78">
@@ -20,17 +20,17 @@ export function HeroSection({ onOpenLeadModal }) {
             <button
               type="button"
               onClick={() => onOpenLeadModal("Hourly")}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded bg-primary px-7 text-base font-bold text-white shadow-soft transition hover:bg-violet"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded bg-ink px-7 text-base font-extrabold text-white shadow-soft transition hover:bg-primary"
             >
               Start with a consultation <ArrowIcon />
             </button>
-            <a href="#services" className="inline-flex h-12 items-center justify-center rounded border border-ink/15 bg-white px-7 text-base font-bold text-ink transition hover:border-primary hover:text-primary">
+            <a href="#services" className="inline-flex h-12 items-center justify-center rounded border border-ink bg-white px-7 text-base font-extrabold text-ink transition hover:bg-ink hover:text-white">
               View hourly services
             </a>
           </div>
           <div className="mt-10 grid max-w-2xl gap-3 sm:grid-cols-3">
             {["Lead conversion", "Automation", "Cloud & AI"].map((label) => (
-              <div key={label} className="border border-line bg-white/75 p-4 shadow-soft">
+              <div key={label} className="border border-ink/10 bg-white p-4 shadow-soft">
                 <Bolt className="h-8 w-6" />
                 <div className="mt-4 text-sm font-bold uppercase tracking-wide text-graphite/70">{label}</div>
               </div>
@@ -46,17 +46,17 @@ export function HeroSection({ onOpenLeadModal }) {
 function ServiceCommandCenter() {
   return (
     <div className="enterprise-card relative rounded-lg p-4 lg:p-5">
-      <div className="rounded-md border border-line bg-cloud p-4">
-        <div className="flex items-center justify-between border-b border-line pb-4">
+      <div className="rounded-md border border-ink/10 bg-white p-4">
+        <div className="flex items-center justify-between border-b border-ink/10 pb-4">
           <div>
             <div className="text-xs font-bold uppercase tracking-[0.18em] text-graphite/55">Service command center</div>
             <div className="mt-1 font-display text-2xl font-bold">Find your voltage level</div>
           </div>
-          <div className="rounded bg-primary px-3 py-2 text-sm font-bold text-white">Live</div>
+          <div className="rounded bg-ink px-3 py-2 text-sm font-bold text-white">Live</div>
         </div>
         <div className="mt-4 space-y-3">
           {serviceTiers.map((service) => (
-            <div key={service.name} className={`rounded border bg-white p-4 ${service.accent}`}>
+            <div key={service.name} className="rounded border border-ink/10 bg-white p-4 transition hover:border-primary/40">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="text-xs font-bold uppercase tracking-[0.16em] text-graphite/50">{service.name}</div>
@@ -73,7 +73,7 @@ function ServiceCommandCenter() {
 
 export function TrustBar() {
   return (
-    <section className="border-y border-line bg-ink text-white">
+    <section className="border-y border-ink bg-ink text-white">
       <div className="section-shell grid gap-4 py-5 text-sm font-bold uppercase tracking-[0.2em] text-white/72 sm:grid-cols-2 lg:grid-cols-5">
         <span>Admin</span>
         <span>Marketing ops</span>
@@ -112,7 +112,7 @@ export function ServicesSection() {
               </div>
               <div className="relative mt-6 flex flex-wrap gap-2">
                 {service.items.map((item) => (
-                  <span key={item} className="rounded border border-line bg-cloud px-3 py-1 text-xs font-bold text-graphite/72">{item}</span>
+                  <span key={item} className="rounded border border-ink/10 bg-white px-3 py-1 text-xs font-bold text-graphite/72">{item}</span>
                 ))}
               </div>
             </article>
@@ -138,7 +138,7 @@ export function PackagesSection({ onOpenLeadModal }) {
           <button
             type="button"
             onClick={() => onOpenLeadModal("Package")}
-            className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded bg-primary px-7 text-base font-bold text-white shadow-soft transition hover:bg-violet"
+            className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded bg-ink px-7 text-base font-extrabold text-white shadow-soft transition hover:bg-primary"
           >
             Discuss a package <ArrowIcon />
           </button>
@@ -155,7 +155,7 @@ export function PackagesSection({ onOpenLeadModal }) {
               </div>
               <div className="relative mt-6 flex flex-wrap gap-2">
                 {offer.includes.map((item) => (
-                  <span key={item} className="rounded border border-line bg-cloud px-3 py-1 text-xs font-bold text-graphite/72">{item}</span>
+                  <span key={item} className="rounded border border-ink/10 bg-white px-3 py-1 text-xs font-bold text-graphite/72">{item}</span>
                 ))}
               </div>
             </article>
