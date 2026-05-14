@@ -6,7 +6,7 @@
 
 :root {
   color-scheme: light;
-  background: #f6f8fb;
+  background: #ffffff;
   color: #101418;
 }
 
@@ -20,10 +20,7 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at 18% 0%, rgba(149, 0, 242, 0.14), transparent 32%),
-    radial-gradient(circle at 92% 8%, rgba(0, 166, 166, 0.1), transparent 28%),
-    linear-gradient(180deg, #fbfaff 0%, #eef3f8 48%, #f6f8fb 100%);
+  background: #ffffff;
   color: #101418;
 }
 
@@ -33,9 +30,9 @@ body {
 
 .mesh-grid {
   background-image:
-    linear-gradient(rgba(16, 20, 24, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 20, 24, 0.06) 1px, transparent 1px);
-  background-size: 42px 42px;
+    linear-gradient(rgba(16, 20, 24, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 20, 24, 0.035) 1px, transparent 1px);
+  background-size: 52px 52px;
 }
 
 .section-shell {
@@ -47,5 +44,5 @@ body {
 }
 
 .enterprise-card {
-  @apply border border-line bg-white/85 shadow-soft backdrop-blur;
+  @apply border border-ink/10 bg-white shadow-soft;
 }
